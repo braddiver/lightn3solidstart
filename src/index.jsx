@@ -1,8 +1,9 @@
 import { render, Config } from '@lightningjs/solid';
-import { HashRouter, Route } from "@solidjs/router";
+import { HashRouter, Route } from '@solidjs/router';
 import App from './pages/App';
 import HelloWorld from './pages/HelloWorld';
 import TextPage from './pages/Text';
+import CountPage from './pages/Count';
 import ButtonsPage from './pages/ButtonsPage';
 import NotFound from './pages/NotFound';
 
@@ -17,10 +18,11 @@ Config.rendererOptions = {
   // deviceLogicalPixelRatio: 1
 };
 
-render(() =>  (
+render(() => (
   <HashRouter root={App}>
     <Route path="/" component={HelloWorld} />
     <Route path="/text" component={TextPage} />
+    <Route path="/count" component={CountPage} />
     <Route path="/buttons" component={ButtonsPage} />
     <Route path="/*all" component={NotFound} />
   </HashRouter>
