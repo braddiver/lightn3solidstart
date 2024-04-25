@@ -1,5 +1,5 @@
 import { Button, Row } from '@lightningjs/solid-ui';
-import { Accessor, Setter, Signal } from 'solid-js';
+import { Setter } from 'solid-js';
 
 const ButtonStyle = {
   width: 200,
@@ -23,6 +23,9 @@ export function Counter(props: Props) {
       </Button>
       <Button style={ButtonStyle} onEnter={() => setCount((prev) => prev - 1)}>
         Decrement
+      </Button>
+      <Button style={ButtonStyle} onEnter={() => setCount(0)}>
+        Reset
       </Button>
     </Row>
   );
