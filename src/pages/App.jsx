@@ -9,6 +9,7 @@ const App = (props) => {
     Text: 't',
     Buttons: 'b',
     Count: 'c',
+    Grid: 'g',
     Escape: ['Escape', 27],
     Backspace: ['Backspace', 8],
     Left: ['ArrowLeft', 37],
@@ -29,6 +30,7 @@ const App = (props) => {
       onAnnouncer={() => (announcer.enabled = !announcer.enabled)}
       onLast={() => history.back()}
       onCount={() => navigate('/count')}
+      onGrid={() => navigate('/grid')}
       onText={() => navigate('/text')}
       onButtons={() => navigate('/buttons')}
       onMenu={() => navigate('/')}
