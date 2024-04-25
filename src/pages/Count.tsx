@@ -23,7 +23,7 @@ const CountPage = () => {
 
   createEffect((previous: ReturnType<typeof count>) => {
     setPreviousCount(previous);
-    return count(); // Passed in as previous on next effect
+    return count(); // Passed to createEffect next time
   }, count()); // Initial value for previous
 
   return (
