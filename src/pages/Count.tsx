@@ -1,6 +1,6 @@
 import { Text, View } from '@lightningjs/solid';
 import { createEffect, createSignal } from 'solid-js';
-import { Button, Row } from '@lightningjs/solid-ui';
+import { Counter } from '../components/Counter';
 
 const OverviewStyle = {
   width: 900,
@@ -12,11 +12,6 @@ const OverviewStyle = {
   flexDirection: 'column',
   justifyContent: 'flexStart',
 } as const;
-
-const ButtonStyle = {
-  width: 200,
-  height: 60,
-};
 
 const Title = {
   fontSize: 42,
@@ -37,18 +32,7 @@ const CountPage = () => {
       <Text style={Title}>Count is {count()}</Text>
       <Text style={Title}>Previous count is {previousCount()}</Text>
 
-      <Row scroll="none">
-        <Button
-          autofocus
-          style={ButtonStyle}
-          onEnter={() => setCount((prev) => prev + 1)}
-        >
-          Increment
-        </Button>
-        <Button style={ButtonStyle} onEnter={() => setCount(count() - 1)}>
-          Decrement
-        </Button>
-      </Row>
+      <Counter count={count} setCount={setCount}></Counter>
     </View>
   );
 };
