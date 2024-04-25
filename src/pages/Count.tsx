@@ -32,7 +32,7 @@ const CountPage = () => {
       <Text style={Title}>Count is {count()}</Text>
       <Text style={Title}>Previous count is {previousCount()}</Text>
 
-      <Counter count={count} setCount={setCount}></Counter>
+      <Counter setCount={setCount}></Counter>
     </View>
   );
 };
