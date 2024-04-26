@@ -1,6 +1,7 @@
 import { useNavigate } from '@solidjs/router';
 import { View } from '@lightningjs/solid';
 import { useFocusManager, useAnnouncer } from '@lightningjs/solid-primitives';
+import { rgba } from '../utils/index.ts';
 
 const App = (props) => {
   useFocusManager({
@@ -23,7 +24,6 @@ const App = (props) => {
   const announcer = useAnnouncer();
   announcer.debug = false;
   announcer.enabled = false;
-
   return (
     <View
       ref={window.APP}
@@ -35,7 +35,7 @@ const App = (props) => {
       onButtons={() => navigate('/buttons')}
       onMenu={() => navigate('/')}
     >
-      <View color={0x071423ff} />
+      <View color={rgba(119, 119, 119)} />
       {props.children}
     </View>
   );

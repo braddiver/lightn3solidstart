@@ -5,7 +5,7 @@ import { Counter } from '../components/Counter';
 const OverviewStyle = {
   width: 900,
   height: 500,
-  y: 350,
+  y: 100,
   x: 20,
   gap: 25,
   display: 'flex',
@@ -14,7 +14,10 @@ const OverviewStyle = {
 } as const;
 
 const Title = {
-  fontSize: 42,
+  fontSize: 35,
+};
+const SubTitle = {
+  fontSize: 25,
 };
 
 const CountPage = () => {
@@ -30,7 +33,7 @@ const CountPage = () => {
     <View style={OverviewStyle}>
       <Text style={Title}>Intro to solid-js: signals and side-effects</Text>
       <Text style={Title}>Count is {count()}</Text>
-      <Text style={Title}>Previous count is {previousCount()}</Text>
+      <Text style={SubTitle}>Previous count is {previousCount()}</Text>
 
       <Counter setCount={setCount}></Counter>
     </View>

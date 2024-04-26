@@ -3,13 +3,13 @@ export default {
     width: 1920, height: 1080
   },
   headlineText: {
-    width: 1920, height: 170, lineHeight: 170, y: 455, contain: 'both',
-    fontSize: 100,
+    width: 1920, height: 170, lineHeight: 170, y: 100, contain: 'both',
+    fontSize: 60,
     textAlign: 'center'
   },
   headlineSubText: {
-    width: 1920, height: 170, lineHeight: 170, y: 655, contain: 'both',
-    fontSize: 60,
+    width: 1920, height: 170, lineHeight: 170, y: 200, contain: 'both',
+    fontSize: 25,
     textAlign: 'center'
   },
   Row: {
