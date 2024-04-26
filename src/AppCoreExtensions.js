@@ -25,9 +25,6 @@ import {
 
 export default class AppCoreExtension extends CoreExtension {
   async run(stage) {
-    // stage.fontManager.addFontFace(
-    //   new WebTrFontFace('NotoSans', {}, 'fonts/NotoSans-Regular.ttf'),
-    // );
     stage.fontManager.addFontFace(
       new SdfTrFontFace(
         'Ubuntu',
