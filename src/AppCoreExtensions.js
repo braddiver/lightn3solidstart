@@ -34,18 +34,8 @@ export default class AppCoreExtension extends CoreExtension {
         { weight: 700 },
         'msdf',
         stage,
-        'fonts/Ubuntu-Bold.msdf.png',
-        'fonts/Ubuntu-Bold.msdf.json',
-      ),
-    );
-    stage.fontManager.addFontFace(
-      new SdfTrFontFace(
-        "Ubuntu",
-        { weight: 400 },
-        "msdf",
-        stage,
-        basePath + "fonts/Ubuntu-Regular.msdf.png",
-        basePath + "fonts/Ubuntu-Regular.msdf.json",
+        'fonts/Ubuntu-Regular.msdf.png',
+        'fonts/Ubuntu-Regular.msdf.json',
       ),
     );
   }
