@@ -1,6 +1,7 @@
 import { Text, View } from '@lightningjs/solid';
 import { Index, createEffect, createSignal } from 'solid-js';
 import { rgba } from '../utils';
+import { useFocusManager } from '@lightningjs/solid-primitives';
 
 type Props = {
   channels: [string, number][];
@@ -23,7 +24,22 @@ export function NetworkColumn(props: Props) {
     setVisibleChannels(vis);
   });
 
-  // Update the view when the visible channels updates
+  useFocusManager({
+    Up: ['ArrowUp', 38],
+    Down: ['ArrowDown', 40],
+  });
+
+  const ColumnStyle = {
+    x: 200,
+    y: 55,
+  };
+
+  const NetworkItemStyle = {
+    width: 400,
+    height: 70,
+    color: rgba(42, 66, 66, 1),
+  };
+
   const textStyle = {
     fontSize: 32,
     mountY: 0.5,
@@ -43,10 +59,19 @@ export function NetworkColumn(props: Props) {
   };
 
   return (
-    <View x={200} y={55}>
+    <View
+      autofocus
+      style={ColumnStyle}
+      onUp={() => {
+        console.log('Up');
+      }}
+      onDown={() => {
+        console.log('Down');
+      }}
+    >
       <Index each={visibleChannels()}>
         {(channel, i) => (
-          <View width={400} height={70} y={78 * i} color={rgba(42, 66, 66, 1)}>
+          <View style={NetworkItemStyle} y={78 * i}>
             <Text style={textStyle}>{channel()[0]}</Text>
             <Text style={textRightStyle}>{channel()[1]}</Text>
           </View>
