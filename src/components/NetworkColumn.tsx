@@ -1,6 +1,6 @@
-import { Text, View } from '@lightningjs/solid';
+import { ElementNode, Text, View } from '@lightningjs/solid';
 import { activeElement, setActiveElement } from '@lightningjs/solid';
-import { Index, createEffect, createSignal } from 'solid-js';
+import { Component, Index, createEffect, createSignal } from 'solid-js';
 import { rgba } from '../utils';
 
 type Props = {
@@ -13,10 +13,11 @@ export function NetworkColumn(props: Props) {
   const [visibleChannels, setVisibleChannels] = createSignal<Props['channels']>(
     [],
   );
+  const refs: ElementNode[] = [];
   const { channels } = props;
 
-  // Update the visible channels when the channelIndex updates
   createEffect(() => {
+    // When channelIndex changes, update the visible channels
     let vis: typeof channels = [];
     for (let i = channelIndex(), j = 0; j < 5; i++, j++) {
       vis[j] = channels[i];
@@ -25,23 +26,31 @@ export function NetworkColumn(props: Props) {
     setVisibleChannels(vis);
   });
 
-  function isAutoFocus(index: number) {
-    const result = focusIndex() === index;
-    if (result) {
-      console.warn('focus!', focusIndex());
+  createEffect(() => {
+    // When focus index changes, focus the element
+    const i = focusIndex();
+    if (refs[i] !== undefined) {
+      setActiveElement(refs[i]);
     }
-    return result;
-  }
+  });
 
   return (
-    <View style={ColumnStyle}>
+    <View autofocus style={ColumnStyle}>
       <Index each={visibleChannels()}>
         {(channel, i) => (
           <View
-            autofocus={isAutoFocus(i)}
+            autofocus={i === 0}
+            ref={refs[i]}
             style={NetworkItemStyle}
             y={78 * i}
             onUp={() => {
+              setChannelIndex((prev) => {
+                let next = prev;
+                if (focusIndex() === 0 && prev > 0) {
+                  next = prev - 1;
+                }
+                return next;
+              });
               setFocusIndex((prev: number) => {
                 let i = 0;
                 if (prev > 0) {
@@ -49,24 +58,21 @@ export function NetworkColumn(props: Props) {
                 }
                 return i;
               });
-              setChannelIndex((prev) => {
-                if (prev - 1 <= 0) return 0;
-                return prev - 1;
-              });
             }}
             onDown={() => {
+              setChannelIndex((prev) => {
+                let next = prev;
+                if (focusIndex() === 4 && prev + 1 < channels.length) {
+                  next = prev + 1;
+                }
+                return next;
+              });
               setFocusIndex((prev: number) => {
                 let i = 4;
                 if (prev < 3) {
                   i = prev + 1;
                 }
                 return i;
-              });
-              setChannelIndex((prev) => {
-                if (prev + 1 >= channels.length) {
-                  return channels.length;
-                }
-                return prev + 1;
               });
             }}
           >
