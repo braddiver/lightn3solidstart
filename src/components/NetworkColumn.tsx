@@ -109,7 +109,7 @@ const textRightStyle = {
   alpha: 0.6,
   fontSize: 32,
   wordwrap: 30,
-  align: 'center', // does not work
+  align: 'right', // does not work
   x: 340,
   mountY: 0.5,
   y: 35,
