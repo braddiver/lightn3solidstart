@@ -65,7 +65,7 @@ export function NetworkColumn(props: Props) {
   }
 
   return (
-    <View style={ColumnStyle}>
+    <View style={ColumnStyle} onUp={onUp} onDown={onDown}>
       <Index each={visibleChannels()}>
         {(channel, i) => (
           <View
@@ -73,8 +73,6 @@ export function NetworkColumn(props: Props) {
             ref={refs[i]}
             style={NetworkItemStyle}
             y={78 * i}
-            onUp={onUp}
-            onDown={onDown}
           >
             <Text style={textStyle}>{channel()[0]}</Text>
             <Text style={textRightStyle}>{channel()[1]}</Text>
