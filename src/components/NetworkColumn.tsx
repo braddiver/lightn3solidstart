@@ -18,7 +18,8 @@ export function NetworkColumn(props: Props) {
 
   createEffect(() => {
     // When channelIndex changes, update the visible channels
-    setVisibleChannels(channels.slice(channelIndex(), channelIndex() + 5));
+    const index = channelIndex();
+    setVisibleChannels(channels.slice(index, index + 5));
   });
 
   createEffect(() => {
