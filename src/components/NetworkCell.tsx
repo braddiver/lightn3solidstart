@@ -1,6 +1,6 @@
 import { Text, View } from '@lightningjs/solid';
 import { rgba } from '../utils';
-import { Accessor, Component, createEffect } from 'solid-js';
+import { Component } from 'solid-js';
 
 export function NetworkCell(props: {
   focus: boolean;
