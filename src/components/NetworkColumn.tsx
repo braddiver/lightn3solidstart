@@ -34,6 +34,40 @@ export function NetworkColumn(props: Props) {
     }
   });
 
+  function onUp() {
+    setChannelIndex((prev) => {
+      let next = prev;
+      if (focusIndex() === 0 && prev > 0) {
+        next = prev - 1;
+      }
+      return next;
+    });
+    setFocusIndex((prev: number) => {
+      let i = 0;
+      if (prev > 0) {
+        i = prev - 1;
+      }
+      return i;
+    });
+  }
+
+  function onDown() {
+    setChannelIndex((prev) => {
+      let next = prev;
+      if (focusIndex() === 4 && prev + 1 < channels.length) {
+        next = prev + 1;
+      }
+      return next;
+    });
+    setFocusIndex((prev: number) => {
+      let i = 4;
+      if (prev < 3) {
+        i = prev + 1;
+      }
+      return i;
+    });
+  }
+
   return (
     <View autofocus style={ColumnStyle}>
       <Index each={visibleChannels()}>
@@ -43,38 +77,8 @@ export function NetworkColumn(props: Props) {
             ref={refs[i]}
             style={NetworkItemStyle}
             y={78 * i}
-            onUp={() => {
-              setChannelIndex((prev) => {
-                let next = prev;
-                if (focusIndex() === 0 && prev > 0) {
-                  next = prev - 1;
-                }
-                return next;
-              });
-              setFocusIndex((prev: number) => {
-                let i = 0;
-                if (prev > 0) {
-                  i = prev - 1;
-                }
-                return i;
-              });
-            }}
-            onDown={() => {
-              setChannelIndex((prev) => {
-                let next = prev;
-                if (focusIndex() === 4 && prev + 1 < channels.length) {
-                  next = prev + 1;
-                }
-                return next;
-              });
-              setFocusIndex((prev: number) => {
-                let i = 4;
-                if (prev < 3) {
-                  i = prev + 1;
-                }
-                return i;
-              });
-            }}
+            onUp={onUp}
+            onDown={onDown}
           >
             <Text style={textStyle}>{channel()[0]}</Text>
             <Text style={textRightStyle}>{channel()[1]}</Text>
