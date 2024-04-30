@@ -1,7 +1,83 @@
 import { Text, View } from '@lightningjs/solid';
-import { For, Index, createEffect, createSignal } from 'solid-js';
+import { activeElement, setActiveElement } from '@lightningjs/solid';
+import { Index, createEffect, createSignal } from 'solid-js';
 import { rgba } from '../utils';
-import { useFocusManager } from '@lightningjs/solid-primitives';
+
+type Props = {
+  channels: [string, number][];
+};
+
+export function NetworkColumn(props: Props) {
+  const [channelIndex, setChannelIndex] = createSignal(0);
+  const [focusIndex, setFocusIndex] = createSignal(0);
+  const [visibleChannels, setVisibleChannels] = createSignal<Props['channels']>(
+    [],
+  );
+  const { channels } = props;
+
+  // Update the visible channels when the channelIndex updates
+  createEffect(() => {
+    let vis: typeof channels = [];
+    for (let i = channelIndex(), j = 0; j < 5; i++, j++) {
+      vis[j] = channels[i];
+    }
+    console.warn({ vis });
+    setVisibleChannels(vis);
+  });
+
+  function isAutoFocus(index: number) {
+    const result = focusIndex() === index;
+    if (result) {
+      console.warn('focus!', focusIndex());
+    }
+    return result;
+  }
+
+  return (
+    <View style={ColumnStyle}>
+      <Index each={visibleChannels()}>
+        {(channel, i) => (
+          <View
+            autofocus={isAutoFocus(i)}
+            style={NetworkItemStyle}
+            y={78 * i}
+            onUp={() => {
+              setFocusIndex((prev: number) => {
+                let i = 0;
+                if (prev > 0) {
+                  i = prev - 1;
+                }
+                return i;
+              });
+              setChannelIndex((prev) => {
+                if (prev - 1 <= 0) return 0;
+                return prev - 1;
+              });
+            }}
+            onDown={() => {
+              setFocusIndex((prev: number) => {
+                let i = 4;
+                if (prev < 3) {
+                  i = prev + 1;
+                }
+                return i;
+              });
+              setChannelIndex((prev) => {
+                if (prev + 1 >= channels.length) {
+                  return channels.length;
+                }
+                return prev + 1;
+              });
+            }}
+          >
+            <Text style={textStyle}>{channel()[0]}</Text>
+            <Text style={textRightStyle}>{channel()[1]}</Text>
+          </View>
+        )}
+      </Index>
+    </View>
+  );
+}
 
 const ColumnStyle = {
   x: 200,
@@ -34,75 +110,3 @@ const textRightStyle = {
   mountY: 0.5,
   y: 35,
 };
-
-type Props = {
-  channels: [string, number][];
-};
-let scrollCount = 0;
-
-export function NetworkColumn(props: Props) {
-  const [channelIndex, setChannelIndex] = createSignal(0);
-  const [focusIndex, setFocusIndex] = createSignal(0);
-  const [visibleChannels, setVisibleChannels] = createSignal<Props['channels']>(
-    [],
-  );
-  const { channels } = props;
-
-  // Update the visible channels when the channelIndex updates
-  createEffect(() => {
-    let vis: typeof channels = [];
-    for (let i = channelIndex(), j = 0; j < 5; i++, j++) {
-      vis[j] = channels[i];
-    }
-    console.warn({ vis });
-    setVisibleChannels(vis);
-  });
-
-  useFocusManager({
-    Up: ['ArrowUp', 38],
-    Down: ['ArrowDown', 40],
-  });
-
-  function isAutoFocus(index: number) {
-    const result = focusIndex() === index;
-    if (result) {
-      console.warn('focus!', focusIndex());
-    }
-    return result;
-  }
-
-  return (
-    <View style={ColumnStyle}>
-      <Index each={visibleChannels()}>
-        {(channel, i) => (
-          <View
-            autofocus={isAutoFocus(i)}
-            style={NetworkItemStyle}
-            y={78 * i}
-            onUp={() => {
-              setFocusIndex((prev: number) => {
-                if (prev >= 0) return 0;
-                const indx = prev - 1;
-                console.warn('up', { focusIndex: indx });
-                return indx;
-              });
-              setChannelIndex((prev) => prev - 1);
-            }}
-            onDown={() => {
-              setFocusIndex((prev: number) => {
-                if (prev >= 4) return 4;
-                const indx = prev + 1;
-                console.warn('down', { focusIndex: indx });
-                return indx;
-              });
-              setChannelIndex((prev) => prev + 1);
-            }}
-          >
-            <Text style={textStyle}>{channel()[0]}</Text>
-            <Text style={textRightStyle}>{channel()[1]}</Text>
-          </View>
-        )}
-      </Index>
-    </View>
-  );
-}
