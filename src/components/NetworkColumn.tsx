@@ -1,6 +1,6 @@
 import { ElementNode, Text, View } from '@lightningjs/solid';
 import { activeElement, setActiveElement } from '@lightningjs/solid';
-import { Component, Index, createEffect, createSignal } from 'solid-js';
+import { Index, createEffect, createSignal } from 'solid-js';
 import { rgba } from '../utils';
 
 type Props = {
@@ -18,12 +18,7 @@ export function NetworkColumn(props: Props) {
 
   createEffect(() => {
     // When channelIndex changes, update the visible channels
-    let vis: typeof channels = [];
-    for (let i = channelIndex(), j = 0; j < 5; i++, j++) {
-      vis[j] = channels[i];
-    }
-    console.warn({ vis });
-    setVisibleChannels(vis);
+    setVisibleChannels(channels.slice(channelIndex(), channelIndex() + 5));
   });
 
   createEffect(() => {
@@ -69,7 +64,7 @@ export function NetworkColumn(props: Props) {
   }
 
   return (
-    <View autofocus style={ColumnStyle}>
+    <View style={ColumnStyle}>
       <Index each={visibleChannels()}>
         {(channel, i) => (
           <View
