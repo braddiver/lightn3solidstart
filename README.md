@@ -1,4 +1,4 @@
-# Fork of: Lightning Starter Template for SolidJS
+# Built on top of Lightning Starter Template for SolidJS
 
 https://github.com/lightning-js/solid-starter-template
 
