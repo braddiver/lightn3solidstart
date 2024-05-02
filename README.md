@@ -1,11 +1,28 @@
-# Lightning Starter Template for SolidJS
+# Fork of: Lightning Starter Template for SolidJS
 
-## Quick Start
+https://github.com/lightning-js/solid-starter-template
 
-```sh
-> npx degit lightning-js/solid-starter-template my-app
-> cd my-app
-> npm i # or yarn or pnpm
-> npm start # or yarn or pnpm
-```
+## Fast scrolling column component for large data-set
 
+NetworkColumn uses no animation or real "scrolling"
+Instead has a fixed number of rows, and the next 5 items (of a 1000 items) text (name and number) update as the user presses up and down arrow keys.
+https://github.com/braddiver/lightn3solidstart/blob/main/src/components/NetworkColumn.tsx
+
+## Used as a demo to compare development in 2 Lightning 3 frameworks
+
+lightning-js/solid:
+https://lightning-js.github.io/solid/#/
+
+lightning-js/blits:
+https://lightningjs.io/v3-docs/blits/components/component_state.html
+
+## Blits version of the same NetworkColumn component is here:
+
+https://github.com/braddiver/my-blits-app/blob/main/src/components/NetworkColumn.js
+
+## Issues
+
+Unlike the Blits version I was unable to:
+
+- get the number text to align right.
+- configure the root canvas object's size
