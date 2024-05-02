@@ -9,7 +9,7 @@ https://github.com/braddiver/lightn3solidstart/blob/main/src/components/NetworkC
 
 ![NetworkColumn](screenshot.jpg)
 
-## Used as a demo to compare development in 2 Lightning 3 frameworks
+## Used as a demo to compare development in Lightning 3 frameworks
 
 lightning-js/solid:
 https://lightning-js.github.io/solid/#/
