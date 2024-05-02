@@ -4,6 +4,7 @@ https://github.com/lightning-js/solid-starter-template
 
 ## Fast scrolling column component for large data-set
 
+![NetworkColumn](screenshot.jpg)
 NetworkColumn uses no animation or real "scrolling". NetworkColumn uses no animation or real "scrolling". Instead uses a fixed number of rows. As user presses up or down arrow key, the next 5 of 1000 items are used to update the elements' text properties.
 https://github.com/braddiver/lightn3solidstart/blob/main/src/components/NetworkColumn.tsx
 
@@ -25,7 +26,3 @@ Unlike the Blits version I was unable to
 
 - get the number text to align right.
 - configure the root canvas object's size
-
-## Screenshot
-
-![NetworkColumn](screenshot.jpg)
