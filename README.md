@@ -5,6 +5,7 @@ https://github.com/lightning-js/solid-starter-template
 ## Fast scrolling column component for large data-set
 
 NetworkColumn uses no animation or real "scrolling". Instead uses a fixed number of rows. As user presses up/down arrow key, the next/previous 5 of 1000 items are used to update the elements' text properties. Avoids lag caused by rendering and scrolling too many elements.
+
 https://github.com/braddiver/lightn3solidstart/blob/main/src/components/NetworkColumn.tsx
 
 ![NetworkColumn](screenshot.jpg)
