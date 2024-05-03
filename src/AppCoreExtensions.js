@@ -27,12 +27,12 @@ export default class AppCoreExtension extends CoreExtension {
   async run(stage) {
     stage.fontManager.addFontFace(
       new SdfTrFontFace(
-        'Ubuntu',
+        'Lato',
         { weight: 700 },
         'msdf',
         stage,
-        'fonts/Ubuntu-Regular.msdf.png',
-        'fonts/Ubuntu-Regular.msdf.json',
+        'fonts/Lato-Regular.msdf.png',
+        'fonts/Lato-Regular.msdf.json',
       ),
     );
   }

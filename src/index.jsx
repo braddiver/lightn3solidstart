@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 import coreExtensionModuleUrl from './AppCoreExtensions.js?importChunkUrl';
 
 Config.debug = true;
-Config.fontSettings.fontFamily = 'Ubuntu';
+Config.fontSettings.fontFamily = 'Lato';
 Config.fontSettings.color = 0xffffffff;
 Config.rendererOptions = {
   coreExtensionModule: coreExtensionModuleUrl,
