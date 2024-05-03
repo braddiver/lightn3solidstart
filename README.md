@@ -11,10 +11,12 @@ https://github.com/braddiver/lightn3solidstart/blob/main/src/components/NetworkC
 
 ## Used as a demo to compare development in Lightning 3 frameworks
 
-lightning-js/solid:
+### Solid-JS
+
 https://lightning-js.github.io/solid/#/
 
-lightning-js/blits:
+### Blits
+
 https://lightningjs.io/v3-docs/blits/components/component_state.html
 
 ## Blits version of the same NetworkColumn component
