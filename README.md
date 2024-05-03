@@ -23,9 +23,3 @@ https://lightningjs.io/v3-docs/blits/components/component_state.html
 ## Blits version of the same NetworkColumn component
 
 https://github.com/braddiver/my-blits-app/blob/main/src/components/NetworkColumn.js
-
-## Issues
-
-Unlike the Blits version I was unable to
-
-- configure the root canvas object's size

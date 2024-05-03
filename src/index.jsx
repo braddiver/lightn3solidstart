@@ -16,6 +16,9 @@ Config.fontSettings.color = 0xffffffff;
 Config.rendererOptions = {
   coreExtensionModule: coreExtensionModuleUrl,
   numImageWorkers: 2,
+  appWidth: 1920,
+  appHeight: 500,
+  enableInspector: true,
   // deviceLogicalPixelRatio: 1
 };
 
