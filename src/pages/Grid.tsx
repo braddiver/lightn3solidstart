@@ -26,8 +26,8 @@ const channels: [string, number][] = [
   ['JK', 16],
 ];
 
-for (let i = 0; i < 1005; i++) {
-  channels.push([createSign(3), i + 17]);
+for (let i = 17; i < 1005; i++) {
+  channels.push([createSign(3), i]);
 }
 
 const GridPage = () => {
