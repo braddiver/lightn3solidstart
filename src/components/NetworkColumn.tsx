@@ -109,8 +109,10 @@ const textRightStyle = {
   alpha: 0.6,
   fontSize: 32,
   wordwrap: 30,
-  align: 'right', // does not work
+  contain: 'both', // Must be used in conjuction with textAlign
+  textAlign: 'right',
   x: 340,
+  width: 30,
   mountY: 0.5,
   y: 35,
 };
