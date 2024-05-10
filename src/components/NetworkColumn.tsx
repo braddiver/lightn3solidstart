@@ -1,5 +1,4 @@
 import { ElementNode, Text, View } from '@lightningjs/solid';
-import { activeElement, setActiveElement } from '@lightningjs/solid';
 import { Index, createEffect, createSignal } from 'solid-js';
 import { rgba } from '../utils';
 
@@ -26,7 +25,7 @@ export function NetworkColumn(props: Props) {
     // When focus index changes, focus the element
     const i = focusIndex();
     if (refs[i] !== undefined) {
-      setActiveElement(refs[i]);
+      refs[i].setFocus();
     }
   });
 
